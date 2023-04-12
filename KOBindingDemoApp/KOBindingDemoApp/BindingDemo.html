@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="jquery-3.6.4.js"></script>
+    <script src="knockout-3.5.1.js"></script>
+</head>
+<body>
+    <input type="number" name="txtNumber"  min="1" max="100" data-bind="value: Number" />
+    This Number is <span data-bind="visible : IsEvenNumber">Even</span>     
+    <!--<span data-bind="visible : IsEvenNumber()== false">Odd</span>-->
+    <script>
+        var myVM = function () {
+            this.Number = ko.observable(6);
+            this.IsEvenNumber = ko.computed(function () {
+                return this.Number % 2 == 0;
+            }, this)
+        }
+
+        ko.applyBindings(myVM);
+    </script>
+</body>
+</html>
